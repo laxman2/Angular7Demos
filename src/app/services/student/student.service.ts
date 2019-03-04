@@ -28,13 +28,13 @@ export class StudentService {
     return studentList;
   }
 
-  doRegisterStudent(data, index) {
+  doRegisterStudent(data, index: number) {
     const studentList = JSON.parse(localStorage.getItem('students'));
     let returnData;
-    console.log('index', index);
     if (index != null) {
-      for (let i = 0; i < studentList.length; i++) {
-        if (index !== i && studentList[i].email === data.email) {
+      let i: number;
+      for ( i = 0; i < studentList.length; i++) {
+        if (index != i && studentList[i].email.trim() === data.email.trim()) {
           returnData = {
             code: 503,
             message: 'Email Address Already In Use',
